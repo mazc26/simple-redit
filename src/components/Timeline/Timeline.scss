@@ -1,0 +1,23 @@
+.timeline-container {
+  max-height: 100vh;
+  height: 100vh;
+  overflow: auto;
+
+  .dismiss-all {
+    margin-top: 20px;
+    cursor: pointer;
+    color: red;
+  }
+
+  .no-more-posts {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .reload-button {
+    margin-top: 14px;
+  }
+}
