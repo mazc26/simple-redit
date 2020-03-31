@@ -7,6 +7,6 @@ Steps to reproduce it.
 
 TO-DO:
 
-Implement persistency on data, maybe with redux-persist, or even a little bit simpler with localStorage.
-Implement any prettifier and Linter
-Do some testing.
+* Implement persistency on data, maybe with redux-persist, or even a little bit simpler with localStorage.
+* Implement any prettifier and Linter
+* Do some testing.
