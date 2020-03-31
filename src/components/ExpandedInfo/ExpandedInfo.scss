@@ -1,6 +1,26 @@
 .expanded-info-container {
-  display: flex;
-  justify-content: center;
-  align-content: center;
-  height: 100%;
+  padding: 40px;
+
+  .thumbnai-expanded-container {
+    margin-bottom: 14px;
+  }
+  
+  .content-container{
+    display: flex;
+    margin: 2px 0 0 0;
+
+    .title {
+      font-weight: bold;
+      font-size: 16px;
+    }
+  }
+  .expanded-title {
+    font-size: 14px;
+    margin-left: 5px;
+  }
+
+  .expanded-author {
+    font-size: 14px;
+    margin-top: 5px;
+  }
 }

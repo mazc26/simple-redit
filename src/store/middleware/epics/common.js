@@ -12,7 +12,7 @@ export const fetchPostsEpic = action$ => action$.pipe(
   ofType(fetchPosts.type),
   mergeMap(action =>
     from(
-        apiParser("news/top.json", "GET")
+        apiParser("news/top.json", "GET", action.payload)
         .then(fetchPostsSuccess)
         .catch(fetchPostsError)
     )

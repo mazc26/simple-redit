@@ -2,13 +2,16 @@
   max-height: 100vh;
   height: 100vh;
   overflow: auto;
+  background-color: #efefef;
 
+  
   .dismiss-all {
-    margin-top: 20px;
+    text-align: center;
+    margin: 15px 0;
     cursor: pointer;
     color: red;
   }
-
+  
   .no-more-posts {
     height: 100%;
     display: flex;
@@ -20,4 +23,12 @@
   .reload-button {
     margin-top: 14px;
   }
+}
+.main-title {
+  background-color: red;
+  text-align: center;
+  padding: 15px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #fff;
 }

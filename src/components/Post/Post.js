@@ -4,43 +4,60 @@ import { parseDate } from '../../utils/parseDate';
 import { getThumbnail } from '../../utils/getThumbnail';
 
 import './Post.scss';
+import { Grid } from '@material-ui/core';
 
-const Post = ({ post, unread, setReadStatus, dismissPost }) => {
+const Post = ({ post, unread, setReadStatus, dismissPost, setExpandedInfo }) => {
+  const handleClick = () => {
+    if (unread) {
+      setReadStatus(post.id)
+    }
+    setExpandedInfo(post)
+  }
+
   return (
     <Fragment>
       <div
-        onClick={unread ? ()=> setReadStatus(post.id) : null} 
+        onClick={handleClick}
         className="post-container">
-        <div>
-          {
-            unread ? <div className="unread-dot"></div> : null
-          }
-        </div>
-        <div>
-          title:
-          {post.title}
-        </div>
-        <div>
-          author:
-          {post.author}
-        </div>
-        <div>
-          time:
-          {parseDate(post.created_utc)}
-        </div>
-        <div>
-          Thumbnail: 
-          {getThumbnail(post.thumbnail)}
-        </div>
-        <div>
-          Comments: 
-          {post.num_comments}
-        </div>
-      </div>
-      <div
-        onClick={()=> dismissPost(post.id)} 
-        className="dismiss-post">
-        DISMISS POST
+        <Grid container>
+          <Grid item xs={1}>
+            {unread ? <div className="unread-dot"></div> : null}
+          </Grid>
+          <Grid item lg={2} md={12}>
+            <div className="thumbnail">
+              {getThumbnail(post.thumbnail)}
+            </div>
+          </Grid>
+          <Grid item xs={9}>
+            <Grid container>
+              <Grid item xs={12}>
+                <div className="post-title">
+                  {post.title}
+                </div>
+              </Grid>
+              <Grid item xs={12}>
+                <div className="post-author">
+                  Author: {post.author}
+                </div>
+              </Grid>
+              <Grid container>
+                <Grid item xs={6}>
+                  <div className="post-created-hour">{parseDate(post.created_utc)}</div>
+                </Grid>
+                <Grid item xs={6}>
+                  <div className="post-comments">{post.num_comments} comments</div>
+                </Grid>
+                <Grid item xs={12}>
+                  <div
+                    onClick={() => dismissPost(post.id)}
+                    className="dismiss-post">
+                    × Dismiss post
+                  </div>
+                </Grid>
+              </Grid>
+            </Grid>
+          </Grid>
+        </Grid>
       </div>
     </Fragment>
   )

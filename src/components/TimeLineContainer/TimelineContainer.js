@@ -9,13 +9,13 @@ import './TimelineContainer.scss';
 
 const TimelineContainer = ({ fetchPosts, isFetchingPosts }) => {
   useEffect(() => {
-    fetchPosts();
+    fetchPosts({after: "", count: 0});
   }, [])
 
   if (isFetchingPosts) {
     return (
       <div className="circular-progress-container">
-        <CircularProgress size={90} color="primary" />
+        <CircularProgress size={90} />
       </div>
     )
   }

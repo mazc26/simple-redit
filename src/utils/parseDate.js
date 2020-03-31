@@ -10,7 +10,6 @@ export const parseDate = utcDate => {
     return `Created ${currentHour - lastHour} hours ago`;
   } else {
     const days = currentDay - lastDay;
-    console.log(days, "LOS DIAS")
     return `Created ${ days > 1 ? days `days` : `a day` } ago`;
   }
 }

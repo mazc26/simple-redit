@@ -7,7 +7,7 @@ export const apiParser = (route, method, payload) => {
     //here you can add other methods you need
     default: 
     return (
-      axios.get(BASE_URL , { params: { limit: 4 } })
+      axios.get(BASE_URL , { params: { limit: 5, after: payload.after }})
       .then()
       .catch()
     ) 

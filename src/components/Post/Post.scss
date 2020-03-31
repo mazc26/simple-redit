@@ -1,7 +1,40 @@
 .post-container {
-  margin-bottom: 10px;
+  margin: 12px 0;
   cursor: pointer;
+  padding: 0 12px;
+  box-sizing: border-box;
 
+  .thumbnail {
+    & img {
+      width: 55px;
+      height: 55px;
+      border: 1px solid #9e9e9e;
+    }
+  }
+
+  .post-title {
+    font-weight: bold;
+  }
+
+  .post-author {
+    margin-top: 5px;
+    color: #9e9e9e;
+    font-size: 14px;
+  }
+
+  .post-created-hour, .post-comments {
+    color: #9e9e9e;
+    font-size: 12px;
+  }
+
+  .dismiss-post {
+    margin-top: 4px;
+    color: red;
+
+    &:hover {
+      color: black;
+    }
+  }
 }
 
 .dismiss-post {
@@ -10,9 +43,10 @@
 }
 
 .unread-dot {
+  margin: 5px auto;
   width: 10px;
   height: 10px;
   border-radius: 18px;
   display: block;
-  background-color: blue;
+  background-color: red;
 }

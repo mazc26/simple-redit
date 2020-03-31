@@ -1,23 +1,29 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit';
 
 let initialState = {
   posts: [],
   readPosts: [],
-  expandedInfo: {},
+  expandedInfo: null,
   isFetchingPosts: false,
+  isFetchingMorePosts: false,
+  after: null,
+  dist: 0,
 }
 
 const commonSlice = createSlice({
   name: 'common',
   initialState,
   reducers: {
-    fetchPosts(state) {
-      state.isFetchingPosts = true;
-      state.readPosts = initialState.readPosts;
+    fetchPosts(state, action) {
+      state.isFetchingPosts =  !action.payload.after.length;
+      state.posts = action.payload.count ? state.posts : [];
+      state.isFetchingMorePosts = action.payload.after.length;
     },
-    fetchPostsSuccess(state, action) {
+    fetchPostsSuccess(state, action) {  
       state.isFetchingPosts = false;
-      state.posts = action.payload.data.data.children;
+      state.isFetchingMorePosts = false;
+      state.posts = [...state.posts, ...action.payload.data.data.children];
+      state.after = action.payload.data.data.after;
     },
     fetchPostsError(state, action) {
       state.isFetchingPosts = false;
@@ -31,6 +37,10 @@ const commonSlice = createSlice({
     },
     dismissAll(state) {
       state.posts = initialState.posts;
+      state.expandedInfo = initialState.expandedInfo;
+    },
+    setExpandedInfo(state, action) {
+      state.expandedInfo = action.payload;
     }
   }
 })
@@ -42,6 +52,8 @@ export const {
   setReadStatus,
   dismissPost,
   dismissAll,
+  loadMore,
+  setExpandedInfo,
 } = commonSlice.actions
 
 export default commonSlice.reducer
